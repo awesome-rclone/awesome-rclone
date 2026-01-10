@@ -1,4 +1,4 @@
-**Awesome Rclone** [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Rclone [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 > A curated list of tools, GUIs, integrations, libraries, and resources for [rclone](https://rclone.org/#docs) - the "Swiss army knife of cloud storage".
 
