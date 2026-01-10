@@ -2,8 +2,7 @@
 
 > A curated list of tools, GUIs, integrations, libraries, and resources for [rclone](https://rclone.org/#docs) - the "Swiss army knife of cloud storage".
 
-<!--lint ignore-->
-[Rclone](https://github.com/rclone/rclone) is a command-line program to sync files and directories to and from dozens of cloud storage providers. This list collects the ecosystem of projects built around rclone.
+[Rclone](https://github.com/rclone/rclone?tab=readme-ov-file#rclone) is a command-line program to sync files and directories to and from dozens of cloud storage providers. This list collects the ecosystem of projects built around rclone.
 
 ## Contents
 - [Official Resources](#official-resources)
@@ -51,7 +50,6 @@
 - [Rclone Navigator](https://github.com/Communist02/RcloneNavigator) - Desktop GUI for managing files in cloud storage. Supports Linux and Windows with features for browsing, uploading, downloading, mounting, and serving remotes. ![GitHub stars](https://img.shields.io/github/stars/Communist02/RcloneNavigator)
 - [Rclone Browser](https://github.com/kapitainsky/RcloneBrowser) - Cross-platform Qt GUI for browsing, transferring, mounting, and streaming files. Fork of original by mmozeiko. **`Inactive since 2020`** ![GitHub stars](https://img.shields.io/github/stars/kapitainsky/RcloneBrowser)
 - [RcloneTray](https://github.com/dimitrov-adrian/RcloneTray) - Minimal Electron-based system tray application for mounting and managing remotes. **`Inactive since 2018`** ![GitHub stars](https://img.shields.io/github/stars/dimitrov-adrian/RcloneTray)
-<!--lint ignore-->
 - [RcloneOSX](https://github.com/erdoukki/rcloneosx) - Native macOS GUI built in Swift for sync/backup tasks (inspired by RsyncOSX). **`Inactive since 2019`** ![GitHub stars](https://img.shields.io/github/stars/erdoukki/rcloneosx)
 - [RcloneNg](https://github.com/ElonH/RcloneNg) - Angular-based web app GUI with two-pane file manager interface. Packaged for OpenWrt. **`Inactive since 2021`** ![GitHub stars](https://img.shields.io/github/stars/ElonH/RcloneNg)
 
