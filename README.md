@@ -1,46 +1,42 @@
 # Awesome Rclone [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> A curated list of tools, GUIs, integrations, libraries, and resources for [rclone](https://rclone.org/) - the "Swiss army knife of cloud storage".
+> A curated list of tools, GUIs, integrations, libraries, and resources for [rclone](https://rclone.org/#docs) - the "Swiss army knife of cloud storage".
 
 [Rclone](https://github.com/rclone/rclone) is a command-line program to sync files and directories to and from dozens of cloud storage providers. This list collects the ecosystem of projects built around rclone.
 
 ## Contents
-
-- [Awesome Rclone ](#awesome-rclone-)
-	- [Contents](#contents)
-	- [Official Resources](#official-resources)
-	- [Clients \& GUIs](#clients--guis)
-		- [Desktop](#desktop)
-		- [Web](#web)
-		- [Mobile](#mobile)
-	- [Sync and Backup Tools](#sync-and-backup-tools)
-		- [Two-Way Sync](#two-way-sync)
-		- [Backup Utilities](#backup-utilities)
-		- [Backup Software with Rclone Support](#backup-software-with-rclone-support)
-	- [API Libraries and SDKs](#api-libraries-and-sdks)
-		- [JavaScript / TypeScript](#javascript--typescript)
-		- [Python](#python)
-		- [PHP](#php)
-		- [Rust](#rust)
-		- [Go](#go)
-	- [Automation and Scripts](#automation-and-scripts)
-	- [Cloud and System Integrations](#cloud-and-system-integrations)
-		- [Kubernetes](#kubernetes)
-		- [Home Automation](#home-automation)
-		- [CI/CD](#cicd)
-		- [NFS](#nfs)
-	- [Docker Images](#docker-images)
-	- [Forks and Alternate Builds](#forks-and-alternate-builds)
-	- [Utilities and Miscellaneous](#utilities-and-miscellaneous)
-	- [Contributing](#contributing)
-	- [License](#license)
+- [Official Resources](#official-resources)
+- [Clients \& GUIs](#clients--guis)
+	- [Desktop](#desktop)
+	- [Web](#web)
+	- [Mobile](#mobile)
+- [Sync and Backup Tools](#sync-and-backup-tools)
+	- [Two-Way Sync](#two-way-sync)
+	- [Backup Utilities](#backup-utilities)
+	- [Backup Software with Rclone Support](#backup-software-with-rclone-support)
+- [API Libraries and SDKs](#api-libraries-and-sdks)
+	- [JavaScript / TypeScript](#javascript--typescript)
+	- [Python](#python)
+	- [PHP](#php)
+	- [Rust](#rust)
+	- [Go](#go)
+- [Automation and Scripts](#automation-and-scripts)
+- [Cloud and System Integrations](#cloud-and-system-integrations)
+	- [Kubernetes](#kubernetes)
+	- [Home Automation](#home-automation)
+	- [CI/CD](#cicd)
+	- [NFS](#nfs)
+- [Docker Images](#docker-images)
+- [Forks and Alternate Builds](#forks-and-alternate-builds)
+- [Utilities and Miscellaneous](#utilities-and-miscellaneous)
+- [Contributing](#contributing)
 
 ---
 
 ## Official Resources
 - [Rclone](https://github.com/rclone/rclone) - The core command-line tool for syncing files to 70+ cloud storage providers. Created by @ncw and loved by everyone. ![GitHub stars](https://img.shields.io/github/stars/rclone/rclone)
-- [Docs](https://rclone.org) - The official **`rclone`** docs
-- [Forum](https://forum.rclone.org) - The official **`rclone`** forum
+- [Docs](https://rclone.org) - The official **`rclone`** docs.
+- [Forum](https://forum.rclone.org) - The official **`rclone`** forum.
 
 ## Clients & GUIs
 
@@ -70,7 +66,7 @@
 - [RCX (Rclone for Android)](https://github.com/x0b/rcx) - Full-featured Android file manager powered by rclone. Browse, upload, download, stream, and manage files on cloud remotes. Available on [F-Droid](https://f-droid.org/en/packages/io.github.x0b.rcx/) and Google Play. ![GitHub stars](https://img.shields.io/github/stars/x0b/rcx)
 - [Round Sync](https://github.com/newhinton/Round-Sync) - Fork of RCX with Material 3 Design, task management, and enhanced features. Available on [F-Droid](https://f-droid.org/packages/de.felixnuesse.extract/) and [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/de.felixnuesse.extract). [Website](https://roundsync.com/) ![GitHub stars](https://img.shields.io/github/stars/newhinton/Round-Sync)
 - [Rclone Explorer](https://github.com/patrykcoding/rcloneExplorer) - Original Android GUI for rclone. **`Inactive since 2018, superseded by RCX`** ![GitHub stars](https://img.shields.io/github/stars/patrykcoding/rcloneExplorer)
-- [Unified Cloud Storage](https://play.google.com/store/apps/details?id=com.codestation.unifiedcloudstorage) - Legacy Android app for managing multiple cloud storage accounts via rclone. **`Inactive since 2017`
+- [Unified Cloud Storage](https://play.google.com/store/apps/details?id=com.codestation.unifiedcloudstorage) - Legacy Android app for managing multiple cloud storage accounts via rclone. **`Inactive since 2017`**
 
 
 ## Sync and Backup Tools
@@ -95,7 +91,7 @@
 
 - [Kopia](https://github.com/kopia/kopia) - Open-source backup tool for encrypted, deduplicated backups. Supports rclone as transport for additional cloud providers. ![GitHub stars](https://img.shields.io/github/stars/kopia/kopia)
 - [restic](https://github.com/restic/restic) - Secure deduplicating backup program. Can use rclone as backend to access many cloud storage services. ![GitHub stars](https://img.shields.io/github/stars/restic/restic)
-- [HashBackup](http://www.hashbackup.com/) - Efficient multi-threaded command-line backup for Linux/Unix. Can invoke rclone as transport for unsupported storage systems. **`Commercial`
+- [HashBackup](http://www.hashbackup.com/) - Efficient multi-threaded command-line backup for Linux/Unix. Can invoke rclone as transport for unsupported storage systems. **`Commercial`**
 - [Duplicity Backend](https://github.com/GilGalaad/duplicity-rclone) - Plugin allowing Duplicity backup software to use rclone as a storage backend. **`Archived`** ![GitHub stars](https://img.shields.io/github/stars/GilGalaad/duplicity-rclone)
 - [Rcloner](https://github.com/vifreefly/rcloner) - Ruby gem wrapping Duplicity and rclone for easy app backups with encryption. ![GitHub stars](https://img.shields.io/github/stars/vifreefly/rcloner)
 - [Doomsday Machine](https://github.com/johnjones4/Doomsday-Machine) - Backup tool using rclone to archive data from various cloud services (IMAP, Drive, etc.) into Docker containers. **`Archived`** ![GitHub stars](https://img.shields.io/github/stars/johnjones4/Doomsday-Machine)
@@ -105,7 +101,7 @@
 ### JavaScript / TypeScript
 
 - [rclone](https://github.com/FWeinb/rclone-js) - JavaScript implementation of rclone cryptography for the browser (filename encryption). ![GitHub stars](https://img.shields.io/github/stars/FWeinb/rclone-js)
-- [rclone-sdk](https://github.com/rclone-ui/rclone-sdk) - Typed SDK for browser and Node. Integrates with vanilla fetch, React Query, and SWR. ![GitHub stars](https://img.shields.io/github/stars/rclone-ui/rclone-sdk) 
+- [rclone-sdk](https://github.com/rclone-ui/rclone-sdk?tab=readme-ov-file#-javascript--typescript) - Typed SDK for browser and Node. Integrates with vanilla fetch, React Query, and SWR. ![GitHub stars](https://img.shields.io/github/stars/rclone-ui/rclone-sdk) 
 - [rclone-api](https://github.com/rclone/rclone-js-api) - JavaScript client for rclone's RC HTTP API. Promise-based functions for all RC endpoints. **`Inactive, superseded by rclone-sdk`** ![GitHub stars](https://img.shields.io/github/stars/rclone/rclone-js-api) 
 - [rclone.js](https://github.com/sntran/rclone.js) - Node.js wrapper exposing rclone functions via JavaScript. Downloads rclone binary on install and provides Promise-based API. **`Inactive, superseded by rclone-sdk`** ![GitHub stars](https://img.shields.io/github/stars/sntran/rclone.js) 
 - [@fyears/rclone-crypt](https://www.npmjs.com/package/@fyears/rclone-crypt) - Rclone's Crypt encryption algorithm implemented in TypeScript. Enables encrypting/decrypting compatible with rclone's crypt remote.
@@ -177,8 +173,8 @@
 - [rclone-config-builder](https://github.com/Lesmiscore/rclone-config-builder) - Library to build rclone config files in JSON/YAML. ![GitHub stars](https://img.shields.io/github/stars/Lesmiscore/rclone-config-builder)
 - [@x-cmd-pkg/rclone](https://www.npmjs.com/package/@x-cmd-pkg/rclone) - Rclone binaries repackaged as npm module for easy installation in Node projects.
 - [vim-netranger](https://github.com/ipod825/vim-netranger) - Vim/Neovim plugin providing ranger-like file explorer with rclone cloud storage support. **`Deprecated`** ![GitHub stars](https://img.shields.io/github/stars/ipod825/vim-netranger)
-- [Sprinkle](https://mmontuori.github.io/Sprinkle/) - Volume clustering utility presenting multiple rclone cloud drives as one virtual volume for backup/recovery. **`Inactive`
-- [Polo File Manager](https://teejee2008.github.io/polo/) - Advanced Linux file manager with built-in rclone integration for cloud storage. **`Inactive`
+- [Sprinkle](https://mmontuori.github.io/Sprinkle/) - Volume clustering utility presenting multiple rclone cloud drives as one virtual volume for backup/recovery. **`Inactive`**
+- [Polo File Manager](https://teejee2008.github.io/polo/) - Advanced Linux file manager with built-in rclone integration for cloud storage. **`Inactive`**
 
 ---
 
@@ -186,15 +182,8 @@
 
 Contributions are welcome!
 
-Please read the contribution guidelines before submitting a pull request:
+Please read the [contribution guidelines](contributing.md) before submitting a pull request:
 - Ensure the project is actively related to rclone
 - Include a brief description and link to the project
 - Check that the project isn't already listed
 - Add new entries in alphabetical order within their section
-
-## License
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, the contributors have waived all copyright and related or neighboring rights to this work.
-
