@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Awesome Rclone</title>
+    <meta
+      name="description"
+      content="A curated one-page guide to the rclone ecosystem, powered by the README."
+    >
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5efe3;
+        --bg-strong: #efe4d1;
+        --surface: rgba(255, 250, 240, 0.82);
+        --surface-strong: rgba(255, 248, 237, 0.95);
+        --surface-border: rgba(17, 62, 64, 0.12);
+        --text: #143031;
+        --muted: #5a6f6e;
+        --accent-a: #ff7f50;
+        --accent-b: #0c9b8a;
+        --accent-c: #f0b44d;
+        --accent-d: #2f5a89;
+        --shadow: 0 24px 60px rgba(34, 52, 52, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --content-width: 1320px;
+        --heading-font: "Avenir Next Condensed", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
+        --body-font: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        --ui-font: "Avenir Next", "Segoe UI", "Trebuchet MS", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top left, rgba(255, 127, 80, 0.22), transparent 28%),
+          radial-gradient(circle at top right, rgba(12, 155, 138, 0.2), transparent 24%),
+          radial-gradient(circle at 30% 80%, rgba(240, 180, 77, 0.18), transparent 22%),
+          linear-gradient(180deg, var(--bg) 0%, #f8f4eb 54%, #efe1c8 100%);
+        color: var(--text);
+        font-family: var(--body-font);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(rgba(20, 48, 49, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(20, 48, 49, 0.04) 1px, transparent 1px);
+        background-size: 28px 28px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 78%);
+        pointer-events: none;
+        z-index: -2;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .page-shell {
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 32px 20px 72px;
+      }
+
+      .hero {
+        position: relative;
+        margin-bottom: 28px;
+      }
+
+      .hero-card,
+      .panel,
+      .entry-card,
+      .subsection-shell,
+      .empty-state {
+        border: 1px solid var(--surface-border);
+        background: var(--surface);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card {
+        position: relative;
+        isolation: isolate;
+        border-radius: var(--radius-xl);
+        padding: 34px;
+        overflow: hidden;
+      }
+
+      .hero-card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -6% -14% auto;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(12, 155, 138, 0.22), transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .awesome-badge {
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .awesome-badge img {
+        display: block;
+        height: 28px;
+        width: auto;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: var(--heading-font);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+      }
+
+      h1 {
+        margin-top: 22px;
+        font-size: clamp(3.6rem, 8vw, 7rem);
+        max-width: 10ch;
+      }
+
+      .tagline {
+        margin: 18px 0 0;
+        color: var(--muted);
+        font: 600 1.08rem/1.55 var(--ui-font);
+      }
+
+      .intro {
+        margin: 18px 0 0;
+        font-size: 1.12rem;
+        line-height: 1.8;
+      }
+
+      .hero-tools {
+        margin-top: 34px;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 15px 18px;
+        border: 1px solid rgba(20, 48, 49, 0.14);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.82);
+        color: var(--text);
+        font: 500 1rem/1.2 var(--ui-font);
+      }
+
+      .search-input:focus {
+        outline: 2px solid rgba(12, 155, 138, 0.4);
+        outline-offset: 2px;
+      }
+
+      .toc-link:hover,
+      .entry-link:hover {
+        color: var(--accent-b);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 22px;
+        align-items: start;
+      }
+
+      .panel {
+        border-radius: var(--radius-lg);
+      }
+
+      .toc-panel {
+        position: sticky;
+        top: 20px;
+        padding: 22px 18px;
+      }
+
+      .toc-title {
+        margin: 0 0 14px;
+        font: 700 1rem/1 var(--ui-font);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .toc {
+        display: grid;
+        gap: 10px;
+      }
+
+      .toc-link {
+        display: block;
+        padding: 9px 10px;
+        border-radius: 12px;
+        color: var(--muted);
+        font: 600 0.94rem/1.3 var(--ui-font);
+        text-decoration: none;
+        transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+      }
+
+      .toc-link:hover {
+        background: rgba(20, 48, 49, 0.05);
+        transform: translateX(4px);
+      }
+
+      .toc-sub {
+        margin-left: 14px;
+        font-size: 0.88rem;
+      }
+
+      .content {
+        display: grid;
+        gap: 22px;
+      }
+
+      .section-shell {
+        --accent: var(--accent-a);
+        position: relative;
+        isolation: isolate;
+        padding: 26px;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(180deg, var(--surface-strong), rgba(255, 251, 245, 0.78));
+        border: 1px solid rgba(20, 48, 49, 0.1);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .section-shell > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-shell::before {
+        content: "";
+        position: absolute;
+        inset: 1px auto 1px 1px;
+        width: 8px;
+        background: linear-gradient(180deg, var(--accent), rgba(20, 48, 49, 0.2));
+        z-index: 0;
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
+        align-items: start;
+        margin-bottom: 18px;
+      }
+
+      .section-kicker {
+        color: var(--muted);
+        font: 700 0.82rem/1 var(--ui-font);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+
+      .section-title {
+        font-size: clamp(2.2rem, 3vw, 3.3rem);
+      }
+
+      .section-copy {
+        margin: 10px 0 0;
+        max-width: 60rem;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.75;
+      }
+
+      .subsection-shell {
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.54);
+      }
+
+      .subsection-shell + .subsection-shell {
+        margin-top: 18px;
+      }
+
+      .subsection-title {
+        font-size: clamp(1.55rem, 2vw, 2rem);
+      }
+
+      .subsection-copy {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.7;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+
+      .section-shell > .card-grid {
+        margin-top: 22px;
+      }
+
+      .subsection-shell .card-grid {
+        margin-top: 18px;
+      }
+
+      .entry-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px;
+        border-radius: 18px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 250, 241, 0.74));
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      }
+
+      .entry-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(20, 48, 49, 0.16);
+        box-shadow: 0 24px 42px rgba(34, 52, 52, 0.16);
+      }
+
+      .entry-topline {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .entry-link {
+        font: 700 1.2rem/1.15 var(--ui-font);
+        text-decoration: none;
+      }
+
+      .entry-link::after {
+        content: "↗";
+        margin-left: 8px;
+        font-size: 0.9em;
+      }
+
+      .entry-description {
+        margin: 0;
+        color: #2a4647;
+        font-size: 1rem;
+        line-height: 1.72;
+      }
+
+      .entry-description code,
+      .section-copy code,
+      .subsection-copy code {
+        padding: 0.15em 0.4em;
+        border-radius: 999px;
+        background: rgba(20, 48, 49, 0.08);
+        font: 600 0.92em/1 var(--ui-font);
+      }
+
+      .entry-description strong {
+        font-family: var(--ui-font);
+      }
+
+      .inline-badge {
+        display: inline-block;
+        height: 20px;
+        vertical-align: middle;
+        margin-left: 6px;
+        border-radius: 999px;
+      }
+
+      .note-list {
+        margin: 20px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 12px;
+      }
+
+      .note-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.58);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .note-item::before {
+        content: "•";
+        color: var(--accent-b);
+        font: 700 1.5rem/1 var(--ui-font);
+      }
+
+      .empty-state {
+        padding: 22px;
+        border-radius: var(--radius-lg);
+        text-align: center;
+      }
+
+      .empty-state[hidden] {
+        display: none;
+      }
+
+      .loading,
+      .error {
+        padding: 28px;
+        border-radius: var(--radius-xl);
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: var(--shadow);
+        font: 600 1rem/1.6 var(--ui-font);
+      }
+
+      .loading {
+        margin-top: 10px;
+      }
+
+      .error {
+        color: #7f2b21;
+      }
+
+      @media (max-width: 1080px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .toc-panel {
+          position: static;
+        }
+
+        .toc {
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .page-shell {
+          padding: 18px 14px 56px;
+        }
+
+        .hero-card,
+        .section-shell {
+          padding: 22px;
+        }
+
+        h1 {
+          font-size: clamp(2.8rem, 16vw, 4.3rem);
+        }
+
+        .section-header {
+          grid-template-columns: 1fr;
+        }
+
+        .section-kicker {
+          writing-mode: initial;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <section class="hero-card">
+          <a class="awesome-badge" href="https://awesome.re" target="_blank" rel="noreferrer">
+            <img src="https://awesome.re/badge.svg" alt="Awesome badge">
+          </a>
+          <h1 id="page-title">Awesome Rclone</h1>
+          <p class="tagline" id="page-tagline">Loading the README and building the page.</p>
+          <p class="intro" id="page-intro"></p>
+          <div class="hero-tools">
+            <input
+              id="search-input"
+              class="search-input"
+              type="search"
+              placeholder="Type a project, tool, platform, or keyword"
+              aria-label="Search projects"
+            >
+          </div>
+        </section>
+      </header>
+
+      <div class="layout">
+        <aside class="panel toc-panel">
+          <h2 class="toc-title">Contents</h2>
+          <nav class="toc" id="toc"></nav>
+        </aside>
+        <main class="content" id="content">
+          <div class="loading" id="loading-state">Rendering embedded README…</div>
+          <div class="empty-state" id="empty-state" hidden>No matching entries.</div>
+        </main>
+      </div>
+    </div>
+
+    <noscript>
+      <div class="page-shell">
+        <div class="error">This page needs JavaScript enabled so it can format the embedded README content.</div>
+      </div>
+    </noscript>
+
+    <script id="readme-source" type="text/plain"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"></script>
+
+    <script>
+      const accentPalette = ["#ff7f50", "#0c9b8a", "#f0b44d", "#2f5a89", "#d65f7f", "#2d7a58"];
+      const readmeSource = document.getElementById("readme-source");
+      let fuse = null;
+      let searchRecords = [];
+
+      const els = {
+        title: document.getElementById("page-title"),
+        tagline: document.getElementById("page-tagline"),
+        intro: document.getElementById("page-intro"),
+        search: document.getElementById("search-input"),
+        toc: document.getElementById("toc"),
+        content: document.getElementById("content"),
+        loading: document.getElementById("loading-state"),
+        empty: document.getElementById("empty-state")
+      };
+
+      const slugify = (value) =>
+        value
+          .toLowerCase()
+          .replace(/&/g, "and")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+
+      const escapeHtml = (value) =>
+        value
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+
+      const escapeAttr = escapeHtml;
+
+      function cleanMarkdownText(value) {
+        return value.replace(/\\([\\`*_{}[\]()#+\-.!&])/g, "$1").trim();
+      }
+
+      function plainTextFromMarkdown(value) {
+        return cleanMarkdownText(value)
+          .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, " $1 ")
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, " $1 ")
+          .replace(/`([^`]+)`/g, " $1 ")
+          .replace(/\*\*([^*]+)\*\*/g, " $1 ")
+          .replace(/\*([^*]+)\*/g, " $1 ")
+          .replace(/\s+/g, " ")
+          .trim();
+      }
+
+      function parseInline(source) {
+        let text = cleanMarkdownText(source);
+        const tokens = [];
+        const stash = (html) => `@@TOKEN_${tokens.push(html) - 1}@@`;
+
+        text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) =>
+          stash(`<img class="inline-badge" src="${escapeAttr(src)}" alt="${escapeAttr(alt)}" loading="lazy">`)
+        );
+
+        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) =>
+          stash(`<a href="${escapeAttr(href)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`)
+        );
+
+        text = text.replace(/`([^`]+)`/g, (_, code) => stash(`<code>${escapeHtml(code)}</code>`));
+        text = escapeHtml(text);
+        text = text.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        text = text.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+        text = text.replace(/@@TOKEN_(\d+)@@/g, (_, index) => tokens[Number(index)]);
+
+        return text;
+      }
+
+      function parseBullet(text) {
+        const entryMatch = text.match(/^\[([^\]]+)\]\(([^)]+)\)\s*-\s*(.+)$/);
+
+        if (entryMatch) {
+          return {
+            type: "project",
+            title: cleanMarkdownText(entryMatch[1]),
+            href: entryMatch[2],
+            description: entryMatch[3]
+          };
+        }
+
+        return {
+          type: "note",
+          description: text
+        };
+      }
+
+      function parseReadme(markdown) {
+        const model = {
+          title: "Awesome Rclone",
+          tagline: "",
+          intro: [],
+          sections: []
+        };
+
+        const lines = markdown.split(/\r?\n/);
+        let currentSection = null;
+        let currentSubsection = null;
+        let paragraphBuffer = [];
+
+        const flushParagraph = () => {
+          if (!paragraphBuffer.length) {
+            return;
+          }
+
+          const paragraph = paragraphBuffer.join(" ").trim();
+          paragraphBuffer = [];
+
+          if (!paragraph) {
+            return;
+          }
+
+          const target = currentSubsection || currentSection;
+
+          if (target) {
+            target.paragraphs.push(paragraph);
+          } else {
+            model.intro.push(paragraph);
+          }
+        };
+
+        for (const rawLine of lines) {
+          const line = rawLine.trimEnd();
+          const trimmed = line.trim();
+
+          if (!trimmed || trimmed === "---") {
+            flushParagraph();
+            continue;
+          }
+
+          if (trimmed.startsWith("# ")) {
+            flushParagraph();
+            const rawTitle = trimmed.slice(2).replace(/\s*\[!\[[^\]]*\]\([^)]+\)\]\([^)]+\)\s*$/, "");
+            model.title = cleanMarkdownText(rawTitle);
+            continue;
+          }
+
+          if (trimmed.startsWith("> ")) {
+            flushParagraph();
+            model.tagline = trimmed.slice(2).trim();
+            continue;
+          }
+
+          if (trimmed.startsWith("## ")) {
+            flushParagraph();
+            const title = cleanMarkdownText(trimmed.slice(3));
+            currentSection = {
+              title,
+              slug: slugify(title),
+              paragraphs: [],
+              items: [],
+              subsections: []
+            };
+            currentSubsection = null;
+            model.sections.push(currentSection);
+            continue;
+          }
+
+          if (trimmed.startsWith("### ")) {
+            flushParagraph();
+
+            if (!currentSection) {
+              continue;
+            }
+
+            const title = cleanMarkdownText(trimmed.slice(4));
+            currentSubsection = {
+              title,
+              slug: slugify(`${currentSection.title}-${title}`),
+              paragraphs: [],
+              items: []
+            };
+            currentSection.subsections.push(currentSubsection);
+            continue;
+          }
+
+          if (trimmed.startsWith("- ")) {
+            flushParagraph();
+
+            if (currentSection?.title === "Contents") {
+              continue;
+            }
+
+            const target = currentSubsection || currentSection;
+
+            if (!target) {
+              continue;
+            }
+
+            target.items.push(parseBullet(trimmed.slice(2).trim()));
+            continue;
+          }
+
+          paragraphBuffer.push(trimmed);
+        }
+
+        flushParagraph();
+
+        model.sections = model.sections.filter((section) => section.title !== "Contents");
+        return model;
+      }
+
+      function renderParagraphs(paragraphs, className) {
+        return paragraphs
+          .map((paragraph) => `<p class="${className}">${parseInline(paragraph)}</p>`)
+          .join("");
+      }
+
+      function renderProjectCard(item) {
+        return `
+          <article class="entry-card" data-searchable="true" data-search-id="${escapeAttr(item.searchId)}">
+            <div class="entry-topline">
+              <a class="entry-link" href="${escapeAttr(item.href)}" target="_blank" rel="noreferrer">
+                ${escapeHtml(item.title)}
+              </a>
+            </div>
+            <p class="entry-description">${parseInline(item.description)}</p>
+          </article>
+        `;
+      }
+
+      function renderNotes(items) {
+        if (!items.length) {
+          return "";
+        }
+
+        return `
+          <div class="note-list">
+            ${items
+              .map(
+                (item) => `
+                  <div class="note-item" data-searchable="true" data-search-id="${escapeAttr(item.searchId)}">
+                    <div>${parseInline(item.description)}</div>
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      function renderItems(items) {
+        const projects = items.filter((item) => item.type === "project");
+        const notes = items.filter((item) => item.type === "note");
+
+        return `
+          ${projects.length ? `<div class="card-grid">${projects.map(renderProjectCard).join("")}</div>` : ""}
+          ${renderNotes(notes)}
+        `;
+      }
+
+      function renderSubsection(subsection) {
+        return `
+          <section class="subsection-shell" id="${escapeAttr(subsection.slug)}">
+            <h3 class="subsection-title">${escapeHtml(subsection.title)}</h3>
+            ${renderParagraphs(subsection.paragraphs, "subsection-copy")}
+            ${renderItems(subsection.items)}
+          </section>
+        `;
+      }
+
+      function renderSection(section, index) {
+        return `
+          <section class="section-shell" id="${escapeAttr(section.slug)}" style="--accent: ${accentPalette[index % accentPalette.length]}">
+            <div class="section-header">
+              <div class="section-kicker">${String(index + 1).padStart(2, "0")}</div>
+              <div>
+                <h2 class="section-title">${escapeHtml(section.title)}</h2>
+                ${renderParagraphs(section.paragraphs, "section-copy")}
+              </div>
+            </div>
+            ${renderItems(section.items)}
+            ${section.subsections.map(renderSubsection).join("")}
+          </section>
+        `;
+      }
+
+      function renderToc(sections) {
+        return sections
+          .map(
+            (section) => `
+              <div>
+                <a class="toc-link" href="#${escapeAttr(section.slug)}">${escapeHtml(section.title)}</a>
+                ${
+                  section.subsections.length
+                    ? section.subsections
+                        .map(
+                          (subsection) =>
+                            `<a class="toc-link toc-sub" href="#${escapeAttr(subsection.slug)}">${escapeHtml(subsection.title)}</a>`
+                        )
+                        .join("")
+                    : ""
+                }
+              </div>
+            `
+          )
+          .join("");
+      }
+
+      function buildSearchRecords(model) {
+        searchRecords = [];
+
+        const registerItems = (items, sectionTitle, subsectionTitle = "") => {
+          for (const item of items) {
+            item.searchId = `search-${searchRecords.length}`;
+            searchRecords.push({
+              id: item.searchId,
+              type: item.type,
+              title: item.type === "project" ? item.title : "",
+              description: plainTextFromMarkdown(item.description),
+              section: sectionTitle,
+              subsection: subsectionTitle
+            });
+          }
+        };
+
+        for (const section of model.sections) {
+          registerItems(section.items, section.title);
+
+          for (const subsection of section.subsections) {
+            registerItems(subsection.items, section.title, subsection.title);
+          }
+        }
+
+        fuse = window.Fuse
+          ? new window.Fuse(searchRecords, {
+              threshold: 0.34,
+              ignoreLocation: true,
+              keys: [
+                { name: "title", weight: 0.45 },
+                { name: "description", weight: 0.35 },
+                { name: "section", weight: 0.12 },
+                { name: "subsection", weight: 0.08 }
+              ]
+            })
+          : null;
+      }
+
+      function applySearch() {
+        const query = els.search.value.trim();
+        const cards = Array.from(document.querySelectorAll("[data-searchable='true']"));
+        const matchedIds =
+          !query
+            ? null
+            : new Set(
+                (
+                  fuse
+                    ? fuse.search(query).map((result) => result.item.id)
+                    : searchRecords
+                        .filter((record) =>
+                          [record.title, record.description, record.section, record.subsection]
+                            .join(" ")
+                            .toLowerCase()
+                            .includes(query.toLowerCase())
+                        )
+                        .map((record) => record.id)
+                )
+              );
+
+        for (const card of cards) {
+          const matches = !matchedIds || matchedIds.has(card.dataset.searchId);
+          card.hidden = !matches;
+        }
+
+        const cardGrids = document.querySelectorAll(".card-grid");
+
+        for (const grid of cardGrids) {
+          const visibleChildren = Array.from(grid.children).filter((child) => !child.hidden).length;
+          grid.hidden = visibleChildren === 0;
+        }
+
+        const noteLists = document.querySelectorAll(".note-list");
+
+        for (const list of noteLists) {
+          const visibleChildren = Array.from(list.children).filter((child) => !child.hidden).length;
+          list.hidden = visibleChildren === 0;
+        }
+
+        const subsectionShells = document.querySelectorAll(".subsection-shell");
+
+        for (const subsection of subsectionShells) {
+          const hasVisibleCard = subsection.querySelector("[data-searchable='true']:not([hidden])");
+          subsection.hidden = !hasVisibleCard && Boolean(query);
+        }
+
+        const sectionShells = document.querySelectorAll(".section-shell");
+        let visibleSections = 0;
+
+        for (const section of sectionShells) {
+          const hasVisibleCard = section.querySelector("[data-searchable='true']:not([hidden])");
+          const hasVisibleSubsection = section.querySelector(".subsection-shell:not([hidden])");
+          const shouldKeep = !query || hasVisibleCard || hasVisibleSubsection;
+          section.hidden = !shouldKeep;
+
+          if (shouldKeep) {
+            visibleSections += 1;
+          }
+        }
+
+        els.empty.hidden = visibleSections !== 0;
+      }
+
+      function renderPage() {
+        try {
+          const markdown = (readmeSource?.textContent || "").replace(/^\s*\n/, "");
+
+          if (!markdown.trim()) {
+            throw new Error("Embedded README content is empty.");
+          }
+
+          const model = parseReadme(markdown);
+          buildSearchRecords(model);
+          document.title = `${model.title} / GitHub Pages`;
+          els.title.textContent = model.title;
+          els.tagline.textContent = model.tagline;
+          els.intro.innerHTML = model.intro.map(parseInline).join(" ");
+          els.toc.innerHTML = renderToc(model.sections);
+          els.content.innerHTML = `
+            <div class="empty-state" id="empty-state" hidden>No matching entries.</div>
+            ${model.sections.map(renderSection).join("")}
+          `;
+
+          els.empty = document.getElementById("empty-state");
+          els.loading?.remove();
+          applySearch();
+        } catch (error) {
+          els.loading.className = "error";
+          els.loading.innerHTML = `The page could not render the embedded README. ${escapeHtml(error.message)}`;
+        }
+      }
+
+      els.search.addEventListener("input", applySearch);
+      renderPage();
+    </script>
+  </body>
+</html>
