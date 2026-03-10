@@ -20,23 +20,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Inject README into index.html
+      - name: Build pages artifact
         run: |
+          cp -r .pages _site
+          cp CNAME _site/
           python3 -c "
-          with open('index.html', 'r') as f:
+          with open('_site/index.html', 'r') as f:
               html = f.read()
           with open('README.md', 'r') as f:
               readme = f.read()
           old = '<script id=\"readme-source\" type=\"text/plain\"></script>'
           new = '<script id=\"readme-source\" type=\"text/plain\">\n' + readme + '\n    </script>'
-          with open('index.html', 'w') as f:
+          with open('_site/index.html', 'w') as f:
               f.write(html.replace(old, new))
           "
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
   deploy:
     needs: build
