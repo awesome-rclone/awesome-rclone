@@ -41,6 +41,7 @@
 
 ### Desktop
 
+- [CloudHop](https://github.com/ozymandiashh/cloudhop) - Free GUI for cloud-to-cloud file transfers with visual wizard, live dashboard, pause/resume, and scheduling. Supports 70+ providers. ![GitHub stars](https://img.shields.io/github/stars/ozymandiashh/cloudhop)
 - [Rclone UI](https://github.com/rclone-ui/rclone-ui) - Modern, battle-tested, cross-platform desktop GUI built with Rust. Most recommended & actively maintained solution for both newbies and veterans. ![GitHub stars](https://img.shields.io/github/stars/rclone-ui/rclone-ui)
 - [RcloneView](https://rcloneview.com/) - Commercial GUI for Windows/macOS with folder comparison and multi-window remote control. Flutter based and developed in Korea.
 - [REM](https://github.com/liriliri/rem) - Kawaii rclone client. Can be seen as an open source version of RcloneView. ![GitHub stars](https://img.shields.io/github/stars/liriliri/rem)
