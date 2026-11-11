@@ -5,7 +5,7 @@
     "title": "Awesome Rclone: GUIs, backup tools, libraries and integrations for rclone",
     "description": "A curated, maintained directory of the rclone ecosystem: desktop, web and mobile GUIs, sync and backup tools, SDKs for JavaScript, Python, Rust and Go, Docker images, Kubernetes drivers and forks.",
     "intro": [
-      "Rclone itself is a command-line tool, and most people who search for it are looking for something around it: a graphical client, a backup tool that uses it underneath, a library to call it from their own code, or a container image to run it on a server. This directory collects those projects, one line each, with a plain note on whether they are still maintained.",
+      "Rclone itself is a command-line tool, and most people who search for it are looking for something around it: a graphical client, a backup tool that uses it underneath, a library to call it from their own code, or a container image to run it on a server. This directory collects those projects, one line each. Projects that are no longer maintained are left out.",
       "Every entry links to the project's own page. Sections with many entries have their own page with a longer introduction on what to look for."
     ],
     "what_is_rclone": {
@@ -20,18 +20,18 @@
       "slug": "clients-and-guis",
       "sections": ["Clients & GUIs"],
       "title": "Rclone GUI clients: desktop, web and mobile apps",
-      "description": "Every graphical interface for rclone in one place: Rclone UI, RcloneView, REM, Rclone Browser and RcloneTray for Windows, macOS and Linux, web UIs such as Motuz and the official WebUI, and Android apps like RCX and Round Sync.",
+      "description": "Every graphical interface for rclone in one place: Rclone UI, RcloneView, REM and Rclone Manager for Windows, macOS and Linux, web UIs such as Motuz, and Android apps like RCX and Round Sync.",
       "teaser": "Desktop, web and mobile front-ends for people who would rather click than type.",
       "intro": [
-        "A GUI for rclone does three things the command line makes tedious: it keeps your remotes and their credentials in one place, it lets you browse and drag files between them, and it manages mounts and scheduled transfers without a terminal window. The projects below range from a modern cross-platform desktop app to system-tray helpers and Android file managers.",
-        "When choosing one, check the platform first, then how recently it was updated. Several well-known names, Rclone Browser and RcloneTray among them, have not been maintained for years and no longer track current rclone releases; they are listed for completeness and marked as inactive. Commercial options are marked too."
+        "A GUI for rclone does three things the command line makes tedious: it keeps your remotes and their credentials in one place, it lets you browse and drag files between them, and it manages mounts and scheduled transfers without a terminal window. The projects below range from cross-platform desktop apps to web interfaces and Android file managers.",
+        "When choosing one, check the platform first, then how recently it was updated. Several well-known names, Rclone Browser and RcloneTray among them, have not been maintained for years and no longer track current rclone releases, so they are not listed here. Commercial options are described as such."
       ]
     },
     {
       "slug": "sync-and-backup-tools",
       "sections": ["Sync and Backup Tools"],
       "title": "Backup and sync tools built on rclone",
-      "description": "Two-way sync tools such as syncrclone and rsinc, backup scripts like rclone_jobber and dfb, and backup software that uses rclone as a transport: Kopia, restic, HashBackup and Duplicity.",
+      "description": "Two-way sync tools such as syncrclone and rsinc, backup scripts like rclone_jobber and dfb, and backup software that uses rclone as a transport: Kopia, restic and HashBackup.",
       "teaser": "Bidirectional sync, rotation scripts, and backup programs that use rclone as their storage layer.",
       "intro": [
         "Rclone copies and syncs in one direction very well, and since version 1.58 it ships its own bisync command for two-way sync. The tools in this section fill the gaps around that: conflict handling and move tracking for two-way sync, retention and rotation for backups, notifications and reports, and integration with backup programs that bring deduplication and encryption of their own.",
@@ -46,7 +46,7 @@
       "teaser": "Call rclone from your own code through its RC API, its crypt format or the embedded library.",
       "intro": [
         "There are three ways to drive rclone from another program. The simplest is to spawn the binary and parse its output, which most wrapper packages do. The more robust one is the remote control API: run rclone rcd and talk to it over HTTP, which is what the typed SDKs target. The third is librclone, the official C interface that embeds rclone in the same process.",
-        "The libraries below are grouped by language. Where a package is inactive or superseded, the note says so; the RC API has been stable for years, so older clients often still work, but the maintained ones follow the OpenAPI specification and cover the full endpoint list."
+        "The libraries below are grouped by language. The RC API has been stable for years, so older clients often still work, but the maintained ones follow the OpenAPI specification and cover the full endpoint list."
       ]
     },
     {
@@ -57,18 +57,18 @@
       "teaser": "Container images, CSI drivers, actions and add-ons for running rclone as part of a larger system.",
       "intro": [
         "On a server rclone usually runs unattended: in a container on a schedule, as a mount inside a Kubernetes pod, as a step in a CI pipeline or as an add-on to another system. This section lists the images and integrations that package it for those jobs.",
-        "Start with the official rclone/rclone image, which tracks stable and beta releases and is enough for scheduled copies and mounts. The community images add cron, health checks and monitoring. For Kubernetes, the CSI driver provisions persistent volumes backed by any rclone remote; the Wunderio driver is archived and the Veloxpack one is the maintained successor."
+        "Start with the official rclone/rclone image, which tracks stable and beta releases and is enough for scheduled copies and mounts. The community images add cron, health checks and monitoring. For Kubernetes, a CSI driver provisions persistent volumes backed by any rclone remote; the Wunderio and Veloxpack drivers are both maintained."
       ]
     },
     {
       "slug": "forks-and-alternatives",
       "sections": ["Forks and Alternate Builds"],
       "title": "Rclone forks and alternative builds",
-      "description": "gclone with Google Drive service-account rotation, fclone's fast prebuilt binaries and rclone_RD for Real-Debrid: what each fork changes and when the upstream rclone release is the better choice.",
-      "teaser": "Modified builds of rclone for specific needs, with notes on which ones are still maintained.",
+      "description": "Forks of rclone such as fclone, which publishes prebuilt binaries, and when the upstream rclone release is the better choice.",
+      "teaser": "Modified builds of rclone for specific needs.",
       "intro": [
-        "For almost everyone the right choice is the upstream rclone release: it supports the most providers, receives security fixes and is what every tool on this site targets. The forks below exist for narrow reasons. The gclone family rotates Google Drive service accounts to work around per-account API quotas, fclone publishes prebuilt binaries quickly, and rclone_RD adds Real-Debrid as a backend for streaming cached torrents.",
-        "Forks lag behind upstream and some are already archived, so check the last release date before relying on one. If you are searching for an alternative to rclone rather than a fork of it, the closest comparable tools are the backup programs in the sync and backup section, which use rclone as one of several transports."
+        "For almost everyone the right choice is the upstream rclone release: it supports the most providers, receives security fixes and is what every tool on this site targets. Forks exist for narrow reasons, such as publishing prebuilt binaries quickly or adding a backend that upstream does not ship.",
+        "Forks lag behind upstream, so check the last release date before relying on one. If you are searching for an alternative to rclone rather than a fork of it, the closest comparable tools are the backup programs in the sync and backup section, which use rclone as one of several transports."
       ]
     }
   ]

@@ -2,6 +2,15 @@
 
 Please note that this project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
 
+## Guidelines
+
+- Ensure the project is actively related to rclone.
+- Include a brief description and a link to the project.
+- Check that the project isn't already listed.
+- Add new entries in alphabetical order within their section.
+- Describe what the project does. Avoid promotional language and badges.
+- Do not add inactive, archived, or deprecated projects.
+
 ## Adding something awesome
 
 If you have something awesome to contribute to an awesome list, this is how you do it.
