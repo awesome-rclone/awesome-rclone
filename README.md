@@ -8,6 +8,7 @@
 	- [Desktop](#desktop)
 	- [Web](#web)
 	- [Mobile](#mobile)
+	- [Terminal](#terminal)
 - [Sync and Backup Tools](#sync-and-backup-tools)
 	- [Two-Way Sync](#two-way-sync)
 	- [Backup Utilities](#backup-utilities)
@@ -57,6 +58,10 @@
 
 - [RCX (Rclone for Android)](https://github.com/x0b/rcx) - Full-featured Android file manager powered by rclone. Browse, upload, download, stream, and manage files on cloud remotes. Available on [F-Droid](https://f-droid.org/en/packages/io.github.x0b.rcx/) and Google Play.
 - [Round Sync](https://github.com/newhinton/Round-Sync) - Fork of RCX with Material 3 Design, task management, and enhanced features. Available on [F-Droid](https://f-droid.org/packages/de.felixnuesse.extract/) and [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/de.felixnuesse.extract). [Website](https://roundsync.com/)
+
+### Terminal
+
+- [ratclone](https://github.com/SyscallBrain/ratclone) - Keyboard-driven terminal UI for rclone. Browses remotes and the local disk in one or two panes, copies and moves between them as rclone jobs that keep running after the app closes, and shows the rclone command behind each transfer.
 
 ## Sync and Backup Tools
 
