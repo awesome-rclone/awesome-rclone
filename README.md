@@ -154,6 +154,7 @@
 - [rclone-openapi](https://github.com/rclone-ui/rclone-openapi) - OpenAPI 3.0 specification for rclone's RC API. Useful for generating clients and documentation.
 - [rclone-config-builder](https://github.com/Lesmiscore/rclone-config-builder) - Library to build rclone config files in JSON/YAML.
 - [@x-cmd-pkg/rclone](https://www.npmjs.com/package/@x-cmd-pkg/rclone) - Rclone binaries repackaged as npm module for easy installation in Node projects.
+- [Scigantic for VS Code](https://marketplace.visualstudio.com/items?itemName=scigantic.scigantic-mount) - VS Code and Cursor extension that mounts public scientific datasets (S3, GCS, Azure Blob, Zenodo, HTTP) as read-only local folders. Runs `rclone nfsmount` on macOS and `rclone mount` on Linux and Windows, and downloads a checksum-pinned rclone if none is on the PATH. Free, MIT licensed, no public source repository.
 
 ---
 
